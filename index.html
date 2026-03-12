@@ -231,14 +231,96 @@
                 grid-template-columns: 1fr;
             }
         }
+
+                /* Fandom Section Styles */
+        .fandom-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--gold);
+            color: var(--text);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(212,175,55,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .tab-btn.active {
+            background: var(--gold);
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .fandom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .fandom-entry {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(212,175,55,0.3);
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .fandom-entry:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+        }
+        
+        .fandom-entry h4 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .entry-meta {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .fandom-entry p {
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
+        
         <nav class="container">
             <a href="#" class="logo">THE SHATTERED REALMS</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                                <li><a href="#fandom">Fandom</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#books">Books</a></li>
                 <li><a href="#world">The World</a></li>
@@ -343,12 +425,287 @@
     <footer>
         <div class="container">
             <p style="font-size: 1.2rem; margin-bottom: 15px;"><strong>THE SHATTERED REALMS</strong></p>
+
+                <section id="fandom">
+        <div class="container">
+            <h2>The Complete Encyclopedia of Aethoria</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">Explore the full depth of The Shattered Realms — every character, place, artifact, and thread of essence that weaves through this fractured world.</p>
+            
+            <div class="fandom-tabs">
+                <button class="tab-btn active" onclick="showTab('characters')">Characters</button>
+                <button class="tab-btn" onclick="showTab('places')">Places & Locations</button>
+                <button class="tab-btn" onclick="showTab('essences')">Threading Essences</button>
+                <button class="tab-btn" onclick="showTab('organizations')">Organizations</button>
+                <button class="tab-btn" onclick="showTab('lore')">Lore & History</button>
+            </div>
+            
+            <div id="characters" class="tab-content active">
+                <h3 style="color: var(--gold); margin-bottom: 30px;">Main Characters</h3>
+                <div class="fandom-grid">
+                    <div class="fandom-entry">
+                        <h4>Kael Voss</h4>
+                        <p class="entry-meta">Protagonist | Seven-Thread Constellation</p>
+                        <p>A nineteen-year-old dock worker from Ashport's Ashen Quarter who discovers he can thread all seven essences. The first person in three thousand years capable of threading the complete constellation, Kael becomes the center of the restored threading architecture and the key to preventing the world's second fracture.</p>
+                        <p><strong>Threading:</strong> Fire, Stone, Void, Mind, Blood, Wind, Shadow (complete seven-thread constellation)</p>
+                        <p><strong>First Appearance:</strong> Book 1, Chapter 1</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Sera Voss</h4>
+                        <p class="entry-meta">Kael's Sister | Tri-Threader | Research Specialist</p>
+                        <p>Kael's fourteen-year-old sister, fiercely intelligent and pragmatic. Born with her threading sealed, when the seal breaks she manifests as a Tri-Threader (Mind, Stone, Fire). Becomes the constellation's primary researcher and theoretical threading expert, publishing eight groundbreaking papers on multi-world threading architecture.</p>
+                        <p><strong>Threading:</strong> Mind, Stone, Fire</p>
+                        <p><strong>Key Quote:</strong> "The work is evidence. The rest is noise."</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Lyra Dawncast (Cassia)</h4>
+                        <p class="entry-meta">Former Church Spy | Shadow & Fire Threader</p>
+                        <p>A dual-threader who escaped the Threadwardens. Originally named Cassia, worked as a Church intelligence operative before joining the Shattered Compact. Expert in Shadow threading and covert operations. Her memoir "Lyra and Cassia: The Story of a Name" becomes foundational text for understanding identity and threading.</p>
+                        <p><strong>Threading:</strong> Shadow, Fire</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Callus</h4>
+                        <p class="entry-meta">Former Threadwarden | Mind Threader | Teacher</p>
+                        <p>Ex-Threadwarden turned Compact leader. Possesses Serin's (Mind Primordial) threading capacity after integration. Serves as primary teacher and strategic mind of the constellation. Executed a corrupt Hexarch, carrying the weight of that choice throughout the series.</p>
+                        <p><strong>Threading:</strong> Mind (Primordial-level capacity)</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Maren & Coll</h4>
+                        <p class="entry-meta">Blood Threading Medical Pioneers</p>
+                        <p>Maren: Blood threader and founder of the Institute for Threading-Integrated Medicine. Coll: Her partner, also a Blood threader. Together they revolutionize medicine through threading research. Parents of Asha, the first eight-thread child.</p>
+                        <p><strong>Threading:</strong> Blood (both)</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Brynn Ashrock</h4>
+                        <p class="entry-meta">Stonethreader | Granith-born</p>
+                        <p>Twenty-one-year-old Stonethreader from Granith who joins the constellation after an uncontrolled threading surge during the Ashport riots. Carries guilt over a mine collapse that killed his cousin Fen. Masters precise Stone threading control.</p>
+                        <p><strong>Threading:</strong> Stone</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Rin</h4>
+                        <p class="entry-meta">Void Threader | Voidlands Native</p>
+                        <p>Void threader who grew up near a Void Seam. Expert in Void threading stability and pressure management. Becomes primary interface with Vaerath during constellation work.</p>
+                        <p><strong>Threading:</strong> Void</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Aleth</h4>
+                        <p class="entry-meta">Wind Primordial | 3000+ Years Old</p>
+                        <p>The Wind Primordial, only surviving member of the original seven. Maintained the threading architecture alone for three thousand years after imprisoning Vaerath. Integrates her consciousness with the constellation to restore full architectural function.</p>
+                        <p><strong>Threading:</strong> Wind (Primordial)</p>
+                        <p><strong>Key Quote:</strong> "I have been waiting. I have been holding. And now you are here."</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Vaerath</h4>
+                        <p class="entry-meta">Seventh Primordial | The Void-Weaver | Imprisoned</p>
+                        <p>The Void Primordial who attempted The Sundering three thousand years ago. Not evil, but convinced the world's architecture was fundamentally flawed. Imprisoned by the other six Primordials. Eventually integrated into the constellation as a conscious partner rather than prisoner.</p>
+                        <p><strong>Threading:</strong> Void (Primordial)</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Asha</h4>
+                        <p class="entry-meta">Eight-Thread Child | Balance Essence</p>
+                        <p>Daughter of Maren and Coll. First person born threading eight essences — the seven traditional threads plus the Balance Essence. Represents the next generation of the architecture. At seventeen, conducts multi-world threading research and establishes connections with twelve worlds.</p>
+                        <p><strong>Threading:</strong> All seven essences + Balance Essence (eight total)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="places" class="tab-content">
+                <h3 style="color: var(--gold); margin-bottom: 30px;">Continents & Major Locations</h3>
+                <div class="fandom-grid">
+                    <div class="fandom-entry">
+                        <h4>Ignar - The Fire Continent</h4>
+                        <p>Volcanic, industrial continent. Home to Ashport and the Ashen Quarter where Kael was born. The Ignar Sovereignty rules here. Known for mining, industry, and harsh working conditions in the lower districts.</p>
+                        <p><strong>Major Cities:</strong> Ashport (capital), Embervast (noble district)</p>
+                        <p><strong>Essence Association:</strong> Fire</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Aelys - The Sky Nation</h4>
+                        <p>Floating spires and wind-carved architecture. Political center with democratic council structure. Most progressive stance on multi-threading. Councilor Vael na Soran leads reform efforts.</p>
+                        <p><strong>Essence Association:</strong> Wind</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Granith - The Stone Continent</h4>
+                        <p>Mountains above the storm layer. Massive stone structures, deep archives, and the Deephold — repository of pre-Fracture knowledge. Daska Fenn runs a major Compact safehouse here.</p>
+                        <p><strong>Major Locations:</strong> Deephold Archive, Highreach, Western Trade District</p>
+                        <p><strong>Essence Association:</strong> Stone</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Umbrath - The Shadow Continent</h4>
+                        <p>Seat of the Primordial Church. Dark, politically complex. Center of Threadwarden operations and Church authority. Perpetually shadowed continent where the Church maintains absolute control.</p>
+                        <p><strong>Essence Association:</strong> Shadow</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Sanguor - The Blood Continent</h4>
+                        <p>Jungles, rivers, and ancient memory. Maren and Coll establish the Institute for Threading-Integrated Medicine here. Rich biodiversity and Blood threading tradition.</p>
+                        <p><strong>Essence Association:</strong> Blood</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Menthos - The Mind Continent</h4>
+                        <p>Libraries, universities, and the Thoughtweb — a Mind-threading communication network. Center of academic research and information exchange. Sela Karath operates a Compact medical facility here.</p>
+                        <p><strong>Essence Association:</strong> Mind</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Voidlands - The Forbidden Continent</h4>
+                        <p>Where Vaerath is imprisoned. Contains multiple Void Seams — unstable rifts in reality. Extremely dangerous. Few survive extended exposure. The prison anchor geometry is located at the central Seam.</p>
+                        <p><strong>Essence Association:</strong> Void</p>
+                        <p><strong>Status:</strong> Restricted access, Compact expeditions only</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Storm Corridors</h4>
+                        <p>The turbulent atmospheric layers between floating continents. Requires skilled Wind threading to navigate safely. Grex pilots the Unscheduled through these regularly.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Dock 14, Ashport</h4>
+                        <p>Where Kael first manifests threading. The starting point of the entire constellation. Now a memorial site marking the beginning of the world's restoration.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="essences" class="tab-content">
+                <h3 style="color: var(--gold); margin-bottom: 30px;">The Seven Threading Essences + Balance</h3>
+                <div class="fandom-grid">
+                    <div class="fandom-entry">
+                        <h4>Fire</h4>
+                        <p>Raw energy, heat, combustion. Destructive but also transformative. Primordial: Rath (deceased). Most common threading type in Ignar.</p>
+                        <p><strong>Applications:</strong> Combat, industry, metal-working</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Stone</h4>
+                        <p>Solidity, structure, permanence. Building and breaking. Primordial: Caran (integrated with constellation). Heavy threading, requires physical strength.</p>
+                        <p><strong>Applications:</strong> Construction, mining, defense</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Wind</h4>
+                        <p>Movement, freedom, change. Navigation and communication. Primordial: Aleth (alive, integrated). Essential for Storm Corridor travel.</p>
+                        <p><strong>Applications:</strong> Flight, weather control, long-distance travel</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Shadow</h4>
+                        <p>Concealment, subtlety, the space between. Mirrors internal state. Primordial: Tael (deceased). Most subjective essence — responds to emotion.</p>
+                        <p><strong>Applications:</strong> Stealth, information gathering, emotional work</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Blood</h4>
+                        <p>Life, connection, organic systems. Medicine and healing. Primordial: Vel (deceased). Enables cellular-level threading.</p>
+                        <p><strong>Applications:</strong> Medical treatment, biological research, longevity</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Mind</h4>
+                        <p>Thought, memory, communication. The Thoughtweb. Primordial: Serin (integrated with Callus). Enables telepathic connection and information processing.</p>
+                        <p><strong>Applications:</strong> Communication networks, memory storage, teaching</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Void</h4>
+                        <p>The Nothing. The space between threads. Primordial: Vaerath (imprisoned, later integrated). Most dangerous and least understood. Container for the other six.</p>
+                        <p><strong>Applications:</strong> Architecture maintenance, reality stabilization, potential manipulation</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Balance Essence</h4>
+                        <p>The Eighth Thread. Not a traditional essence but the quality that holds all seven in correct relationship. Only manifests when someone threads all seven essences naturally. Asha is first to be born with it.</p>
+                        <p><strong>Nature:</strong> Not power but context — creates conditions where balance is natural outcome</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="organizations" class="tab-content">
+                <h3 style="color: var(--gold); margin-bottom: 30px;">Organizations & Factions</h3>
+                <div class="fandom-grid">
+                    <div class="fandom-entry">
+                        <h4>The Shattered Compact</h4>
+                        <p>Underground network of multi-threaders surviving Church persecution. Started as survival group, evolved into research institution. Operates safehouses across all continents. Eventually becomes legitimate after constellation success.</p>
+                        <p><strong>Key Members:</strong> Callus, Lyra, Sela Karath, Daska Fenn</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Primordial Church</h4>
+                        <p>Dominant religious and political institution. Maintains that multi-threading is heresy (attempting to repeat Vaerath's sin). Controls Threadwardens. Based in Umbrath. Power wanes after constellation proves multi-threading essential to world stability.</p>
+                        <p><strong>Military Arm:</strong> Threadwardens</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Threadwardens</h4>
+                        <p>Church's military force tasked with hunting Aberrants (multi-threaders). Highly trained, equipped with Void-salt coated blades. Callus was former Threadwarden before defecting.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Institute for Threading-Integrated Medicine</h4>
+                        <p>Founded by Maren and Coll. Forty-three practitioners. Revolutionary medical threading research. Treats conditions previously untreatable by understanding cellular threading architecture.</p>
+                        <p><strong>Location:</strong> Sanguor</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Constellation</h4>
+                        <p>The group of seven+ threaders who restore the threading architecture. Core members: Kael (center), Sera, Lyra, Brynn, Callus, Maren, Rin, plus integrated Primordials (Aleth, Vaerath, others). Not an organization but a functional necessity.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Ignar Sovereignty</h4>
+                        <p>Government ruling the Fire continent. Authoritarian, industrially focused. Maintains harsh class distinctions between noble districts and working areas like the Ashen Quarter.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="lore" class="tab-content">
+                <h3 style="color: var(--gold); margin-bottom: 30px;">Lore, History & Concepts</h3>
+                <div class="fandom-grid">
+                    <div class="fandom-entry">
+                        <h4>The Fracture</h4>
+                        <p>The world-ending event 3000 years ago. Vaerath attempted The Sundering — collapsing reality to rebuild it. The other six Primordials fought him, imprisoned him, but the world broke in the process. Continents lifted into permanent aerial orbits. Original name: Aethoria (whole world).</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Sundering</h4>
+                        <p>Vaerath's plan to collapse all of existence and rebuild it "cleaner, more perfect." He believed the threading architecture was fundamentally flawed. The attempt caused The Fracture. His theory was partially correct — the architecture did need rebalancing, just not total destruction.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Seven-Thread Constellation</h4>
+                        <p>The theoretical framework where one person threads all seven essences, becoming the center point that holds the architecture in balance. Thought impossible for 3000 years until Kael. Requires willingness — cannot be forced.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Threading Architecture</h4>
+                        <p>The fundamental structure of reality. Seven essence threads woven together, held by Void container. Maintained by Primordials originally, then Aleth alone for 3000 years, finally restored by constellation. Extends across multiple worlds.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Void Seams</h4>
+                        <p>Rifts where Vaerath's prison leaks. Unstable, dangerous. Exposure causes threading instability. Central Seam in Voidlands is where prison anchor geometry was located. Eruptions cause continental drift and architecture destabilization.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Primordials</h4>
+                        <p>Seven humans who discovered threading and bent reality to their will 5000+ years ago. Not gods — just first and most powerful. Rath (Fire), Caran (Stone), Aleth (Wind), Tael (Shadow), Vel (Blood), Serin (Mind), Vaerath (Void). Only Aleth survived to present day.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Threading Seal</h4>
+                        <p>High-level Mindthreading technique to block someone's threading ability. Requires significant skill. Sera was born with one. Breaking produces surge of all suppressed threading at once. Dangerous if not properly managed.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>Multi-World Connection</h4>
+                        <p>Discovery that threading architecture extends beyond Aethoria. Twelve connected worlds total. Five become active during series. Balance Essence enables navigation between worlds. Opens possibility of inter-world cooperation and knowledge exchange.</p>
+                    </div>
+                    <div class="fandom-entry">
+                        <h4>The Twelfth World</h4>
+                        <p>The oldest connected world. A planet that has threaded so long and so completely that the threading is its own nature — self-sustaining, organic, world-as-architecture. The end state the Primordials were aiming for.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
             <p>Chronicles of the Fractured Realms - The Complete Five-Volume Edition</p>
             <p style="margin-top: 10px;">Written by <strong>MUSAN</strong></p>
             <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-dim);">Copyright © 2026 by MUSAN. All rights reserved.</p>
             <p style="margin-top: 10px; font-style: italic;">"For the readers who find themselves in fractured worlds and choose to hold the pieces together."</p>
         </div>
     </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active from all tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
