@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YesPalm Wiki - The Complete Encyclopedia</title>
+<title>The Shattered Realms Wiki - Complete Encyclopedia</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:#1a1a2e;color:#e0e0e0;min-height:100vh}
@@ -107,430 +107,152 @@ a:hover{color:#f0c060;text-decoration:underline}
 .reader-body{padding:40px;font-size:17px;line-height:2;color:#ddd;max-height:80vh;overflow-y:auto}
 .reader-body h3{color:#c9a84c;font-size:22px;margin:30px 0 14px}
 .reader-body p{margin-bottom:16px}
-.recent-articles{background:#16213e;border:1px solid #2a2a4a;border-radius:8px;overflow:hidden}
-.recent-articles h3{background:#c9a84c;color:#000;padding:10px 16px;font-size:13px;font-weight:900;text-transform:uppercase}
-.recent-articles ul{list-style:none;padding:8px 0}
-.recent-articles ul li{padding:8px 16px;border-bottom:1px solid #1a2a4a}
-.recent-articles ul li a{color:#ccc;font-size:13px;display:block}
-.recent-articles ul li a:hover{color:#c9a84c}
-.recent-articles ul li .ra-cat{font-size:11px;color:#666}
 </style>
 </head>
 <body>
 <div class="top-bar">
 <div class="top-bar-inner">
-<div class="logo">YES<span>PALM</span> WIKI</div>
-<nav class="top-nav">
+<div class="logo">SHATTERED <span>REALMS</span></div>
+<div class="top-nav">
 <a href="index.html">Home</a>
 <a href="wiki.html" class="active">Wiki</a>
 <a href="#" onclick="showSection('characters')">Characters</a>
 <a href="#" onclick="showSection('locations')">Locations</a>
-<a href="#" onclick="showSection('artifacts')">Artifacts</a>
-<a href="#" onclick="showSection('books')">Read Books</a>
-</nav>
+<a href="#" onclick="showSection('essences')">Essences</a>
+<a href="#" onclick="openReader('book1')">Read Books</a>
+</div>
 <div class="search-bar">
-<input type="text" id="searchInput" placeholder="Search wiki..." onkeyup="searchWiki(this.value)">
-<button onclick="searchWiki(document.getElementById('searchInput').value)">Search</button>
+<input type="text" placeholder="Search archive...">
+<button>Search</button>
 </div>
 </div>
 </div>
 <div class="hero-wiki">
-<h1>YesPalm Universe Encyclopedia</h1>
-<p>The complete guide to characters, places, artifacts, magic systems, and lore</p>
+<h1>Shattered Realms Encyclopedia</h1>
+<p>Complete documentation of the Threading essences, the Constellation, and the healing of Aethoria</p>
 <div class="wiki-stats">
-<div class="wiki-stat"><div class="num">47</div><div class="label">Characters</div></div>
-<div class="wiki-stat"><div class="num">23</div><div class="label">Locations</div></div>
-<div class="wiki-stat"><div class="num">18</div><div class="label">Artifacts</div></div>
-<div class="wiki-stat"><div class="num">5</div><div class="label">Books</div></div>
+<div class="wiki-stat"><div class="num">84</div><div class="label">Profiles</div></div>
+<div class="wiki-stat"><div class="num">32</div><div class="label">Locations</div></div>
+<div class="wiki-stat"><div class="num">15</div><div class="label">Essences</div></div>
+<div class="wiki-stat"><div class="num">3</div><div class="label">Volumes</div></div>
 </div>
 </div>
 <div class="main-layout">
-<aside class="sidebar">
+<div class="sidebar">
 <div class="sidebar-section">
 <h3>Navigation</h3>
 <ul>
-<li><a href="#" onclick="showHome()" class="active" id="nav-home">Wiki Home</a></li>
-<li><a href="#" onclick="showSection('characters')" id="nav-characters">Characters</a></li>
-<li><a href="#" onclick="showSection('locations')" id="nav-locations">Locations</a></li>
-<li><a href="#" onclick="showSection('artifacts')" id="nav-artifacts">Artifacts</a></li>
-<li><a href="#" onclick="showSection('essences')" id="nav-essences">Essences & Magic</a></li>
-<li><a href="#" onclick="showSection('factions')" id="nav-factions">Factions & Orders</a></li>
-<li><a href="#" onclick="showSection('books')" id="nav-books">Read Books</a></li>
+<li><a href="#" class="active" id="nav-home" onclick="showHome()">Archive Home</a></li>
+<li><a href="#" id="nav-characters" onclick="showSection('characters')">Characters</a></li>
+<li><a href="#" id="nav-locations" onclick="showSection('locations')">Locations</a></li>
+<li><a href="#" id="nav-essences" onclick="showSection('essences')">Essences & Magic</a></li>
+<li><a href="#" id="nav-compact" onclick="showSection('compact')">The Compact</a></li>
+<li><a href="#" id="nav-books" onclick="showSection('books')">Historical Records</a></li>
 </ul>
 </div>
 <div class="sidebar-section">
-<h3>Featured Characters</h3>
+<h3>Key Personnel</h3>
 <ul>
-<li><a href="#" onclick="showArticle('kael')">Kael Dawnstrider</a></li>
-<li><a href="#" onclick="showArticle('seraphina')">Seraphina Moonwhisper</a></li>
-<li><a href="#" onclick="showArticle('vortan')">Lord Vortan</a></li>
-<li><a href="#" onclick="showArticle('zara')">Zara the Swift</a></li>
-<li><a href="#" onclick="showArticle('elder-moros')">Elder Moros</a></li>
+<li><a href="#" onclick="showArticle('kael')">Kael Voss</a></li>
+<li><a href="#" onclick="showArticle('sera')">Seraphina Voss</a></li>
+<li><a href="#" onclick="showArticle('brynn')">Brynn Ashrock</a></li>
+<li><a href="#" onclick="showArticle('cassia')">Cassia Vane</a></li>
+<li><a href="#" onclick="showArticle('callus')">Trainer Callus</a></li>
 </ul>
 </div>
-<div class="sidebar-section">
-<h3>Key Locations</h3>
-<ul>
-<li><a href="#" onclick="showArticle('yespalm-city')">YesPalm City</a></li>
-<li><a href="#" onclick="showArticle('shadowrealm')">The Shadowrealm</a></li>
-<li><a href="#" onclick="showArticle('golden-spire')">The Golden Spire</a></li>
-<li><a href="#" onclick="showArticle('verdant-forest')">Verdant Forest</a></li>
-<li><a href="#" onclick="showArticle('iron-wastes')">The Iron Wastes</a></li>
-</ul>
 </div>
-<div class="recent-articles">
-<h3>Recently Added</h3>
-<ul>
-<li><a href="#" onclick="showArticle('palm-stone')">The Palm Stone<div class="ra-cat">Artifacts</div></a></li>
-<li><a href="#" onclick="showArticle('kael')">Kael Dawnstrider<div class="ra-cat">Characters</div></a></li>
-<li><a href="#" onclick="showArticle('yespalm-city')">YesPalm City<div class="ra-cat">Locations</div></a></li>
-<li><a href="#" onclick="showArticle('shadow-essence')">Shadow Essence<div class="ra-cat">Magic</div></a></li>
-</ul>
-</div>
-</aside>
 <div class="content-area">
 <div id="wiki-home" class="wiki-home">
 <div class="category-grid">
-<div class="cat-card" onclick="showSection('characters')" style="--accent:#4fc3f7">
+<div class="cat-card" onclick="showSection('characters')">
 <div class="cat-icon">⚔️</div>
 <h3>Characters</h3>
-<p>Heroes, villains, and everyone in between</p>
-<div class="cat-count">47 articles</div>
+<p>The Constellation and the operatives of the Compact</p>
+<div class="cat-count">84 articles</div>
 </div>
-<div class="cat-card" onclick="showSection('locations')" style="--accent:#81c784">
+<div class="cat-card" onclick="showSection('locations')">
 <div class="cat-icon">🗺️</div>
 <h3>Locations</h3>
-<p>Cities, realms, dungeons and sacred sites</p>
-<div class="cat-count">23 articles</div>
+<p>From the Ashen Quarter to the Twelve Worlds</p>
+<div class="cat-count">32 articles</div>
 </div>
-<div class="cat-card" onclick="showSection('artifacts')" style="--accent:#ffb74d">
-<div class="cat-icon">💎</div>
-<h3>Artifacts</h3>
-<p>Legendary weapons, relics and items</p>
-<div class="cat-count">18 articles</div>
-</div>
-<div class="cat-card" onclick="showSection('essences')" style="--accent:#ce93d8">
+<div class="cat-card" onclick="showSection('essences')">
 <div class="cat-icon">✨</div>
-<h3>Essences & Magic</h3>
-<p>The seven essences and their powers</p>
-<div class="cat-count">12 articles</div>
-</div>
-<div class="cat-card" onclick="showSection('factions')" style="--accent:#ef9a9a">
-<div class="cat-icon">🛡️</div>
-<h3>Factions & Orders</h3>
-<p>Guilds, kingdoms and secret societies</p>
-<div class="cat-count">9 articles</div>
-</div>
-<div class="cat-card" onclick="showSection('books')" style="--accent:#c9a84c">
-<div class="cat-icon">📖</div>
-<h3>Read Books</h3>
-<p>Read the full YesPalm series</p>
-<div class="cat-count">5 books</div>
+<h3>Essences</h3>
+<p>Threading principles of the seven core forces</p>
+<div class="cat-count">15 articles</div>
 </div>
 </div>
 <div class="featured-section">
-<h2>⭐ Featured Articles</h2>
+<h2>⭐ Featured Documentation</h2>
 <div class="featured-grid">
 <div class="featured-card" onclick="showArticle('kael')">
-<div class="fc-tag">Character</div>
-<h4>Kael Dawnstrider</h4>
-<p>The chosen bearer of the Palm Stone, destined to unite the seven realms against the Shadow King.</p>
+<div class="fc-tag">Constellation</div>
+<h4>Kael Voss</h4>
+<p>The 7-thread bearer who reversed three millennia of deterioration in the dimensional boundary.</p>
 </div>
-<div class="featured-card" onclick="showArticle('yespalm-city')">
+<div class="featured-card" onclick="showArticle('ignar')">
 <div class="fc-tag">Location</div>
-<h4>YesPalm City</h4>
-<p>The shining capital of the Verdant Realm, built upon ancient palm essence deposits.</p>
+<h4>The Ashen Quarter</h4>
+<p>The sector in Ignar where the arithmetic of survival forged the first members of the constellation.</p>
 </div>
-<div class="featured-card" onclick="showArticle('palm-stone')">
-<div class="fc-tag">Artifact</div>
-<h4>The Palm Stone</h4>
-<p>A legendary gem containing the concentrated essence of all seven magical forces.</p>
+<div class="featured-card" onclick="showArticle('harmonic')">
+<div class="fc-tag">Theory</div>
+<h4>7-Thread Harmonic</h4>
+<p>The resonance protocol used to damp Void energy and close the Seams safely.</p>
 </div>
-<div class="featured-card" onclick="showArticle('vortan')">
-<div class="fc-tag">Character</div>
-<h4>Lord Vortan</h4>
-<p>The Shadow King who seeks to plunge all realms into eternal darkness.</p>
+<div class="featured-card" onclick="showArticle('archive')">
+<div class="fc-tag">History</div>
+<h4>The Archive Gap</h4>
+<p>The missing 12 pages in Volume Three documenting the 2001 disruption of the Hexarch's plan.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="section-characters" class="wiki-page">
-<button class="back-btn" onclick="showHome()">&#8592; Back to Wiki Home</button>
-<h2 style="color:#c9a84c;font-size:24px;margin-bottom:16px">Characters</h2>
+<button class="back-btn" onclick="showHome()">← Back to Archive Home</button>
+<h2>Characters</h2>
 <div class="category-list">
-<div class="list-card" onclick="showArticle('kael')"><div class="lc-icon">⚔️</div><div class="lc-info"><h4>Kael Dawnstrider</h4><p>Hero / Palm Bearer</p></div></div>
-<div class="list-card" onclick="showArticle('seraphina')"><div class="lc-icon">🌙</div><div class="lc-info"><h4>Seraphina Moonwhisper</h4><p>Mage / Ally</p></div></div>
-<div class="list-card" onclick="showArticle('vortan')"><div class="lc-icon">👿</div><div class="lc-info"><h4>Lord Vortan</h4><p>Villain / Shadow King</p></div></div>
-<div class="list-card" onclick="showArticle('zara')"><div class="lc-icon">🏹</div><div class="lc-info"><h4>Zara the Swift</h4><p>Rogue / Ally</p></div></div>
-<div class="list-card" onclick="showArticle('elder-moros')"><div class="lc-icon">🧙</div><div class="lc-info"><h4>Elder Moros</h4><p>Mentor / Sage</p></div></div>
-<div class="list-card" onclick="showArticle('torin')"><div class="lc-icon">🛡️</div><div class="lc-info"><h4>Torin Ironhand</h4><p>Warrior / Guardian</p></div></div>
-<div class="list-card" onclick="showArticle('lyra')"><div class="lc-icon">🏵️</div><div class="lc-info"><h4>Lyra Bloomseeker</h4><p>Healer / Druid</p></div></div>
-<div class="list-card" onclick="showArticle('drak')"><div class="lc-icon">🐲</div><div class="lc-info"><h4>Drak Ashborn</h4><p>Anti-Hero / Dragon Rider</p></div></div>
-</div>
-</div>
-<div id="section-locations" class="wiki-page">
-<button class="back-btn" onclick="showHome()">&#8592; Back to Wiki Home</button>
-<h2 style="color:#c9a84c;font-size:24px;margin-bottom:16px">Locations</h2>
-<div class="category-list">
-<div class="list-card" onclick="showArticle('yespalm-city')"><div class="lc-icon">🏙️</div><div class="lc-info"><h4>YesPalm City</h4><p>Capital of the Verdant Realm</p></div></div>
-<div class="list-card" onclick="showArticle('shadowrealm')"><div class="lc-icon">🌌</div><div class="lc-info"><h4>The Shadowrealm</h4><p>Vortan's domain of darkness</p></div></div>
-<div class="list-card" onclick="showArticle('golden-spire')"><div class="lc-icon">🗻</div><div class="lc-info"><h4>The Golden Spire</h4><p>Ancient tower of the Sages</p></div></div>
-<div class="list-card" onclick="showArticle('verdant-forest')"><div class="lc-icon">🌳</div><div class="lc-info"><h4>Verdant Forest</h4><p>Sacred woodland realm</p></div></div>
-<div class="list-card" onclick="showArticle('iron-wastes')"><div class="lc-icon">🏜️</div><div class="lc-info"><h4>The Iron Wastes</h4><p>Barren battleground of the old wars</p></div></div>
-<div class="list-card" onclick="showArticle('crystal-sea')"><div class="lc-icon">🌊</div><div class="lc-info"><h4>The Crystal Sea</h4><p>Mystical ocean of liquid essence</p></div></div>
-</div>
-</div>
-<div id="section-artifacts" class="wiki-page">
-<button class="back-btn" onclick="showHome()">&#8592; Back to Wiki Home</button>
-<h2 style="color:#c9a84c;font-size:24px;margin-bottom:16px">Artifacts</h2>
-<div class="category-list">
-<div class="list-card" onclick="showArticle('palm-stone')"><div class="lc-icon">💎</div><div class="lc-info"><h4>The Palm Stone</h4><p>Legendary gem of seven essences</p></div></div>
-<div class="list-card" onclick="showArticle('shadow-blade')"><div class="lc-icon">🗡️</div><div class="lc-info"><h4>Shadow Blade</h4><p>Vortan's cursed weapon</p></div></div>
-<div class="list-card" onclick="showArticle('moon-staff')"><div class="lc-icon">🪄</div><div class="lc-info"><h4>Moon Staff of Seraphina</h4><p>Ancient staff channeling lunar magic</p></div></div>
-<div class="list-card" onclick="showArticle('iron-gauntlet')"><div class="lc-icon">🥊</div><div class="lc-info"><h4>Iron Gauntlet of Torin</h4><p>Unbreakable armor piece</p></div></div>
-</div>
-</div>
-<div id="section-essences" class="wiki-page">
-<button class="back-btn" onclick="showHome()">&#8592; Back to Wiki Home</button>
-<h2 style="color:#c9a84c;font-size:24px;margin-bottom:16px">Essences &amp; Magic</h2>
-<div class="category-list">
-<div class="list-card" onclick="showArticle('shadow-essence')"><div class="lc-icon">🌑</div><div class="lc-info"><h4>Shadow Essence</h4><p>The dark force of void and fear</p></div></div>
-<div class="list-card" onclick="showArticle('palm-essence')"><div class="lc-icon">🌴</div><div class="lc-info"><h4>Palm Essence</h4><p>Life force of nature and growth</p></div></div>
-<div class="list-card" onclick="showArticle('flame-essence')"><div class="lc-icon">🔥</div><div class="lc-info"><h4>Flame Essence</h4><p>Raw power of fire and will</p></div></div>
-<div class="list-card" onclick="showArticle('moon-essence')"><div class="lc-icon">🌙</div><div class="lc-info"><h4>Moon Essence</h4><p>Mystic energy of dreams and time</p></div></div>
-</div>
-</div>
-<div id="section-factions" class="wiki-page">
-<button class="back-btn" onclick="showHome()">&#8592; Back to Wiki Home</button>
-<h2 style="color:#c9a84c;font-size:24px;margin-bottom:16px">Factions &amp; Orders</h2>
-<div class="category-list">
-<div class="list-card" onclick="showArticle('palm-order')"><div class="lc-icon">🏆</div><div class="lc-info"><h4>The Palm Order</h4><p>Ancient protectors of the Stone</p></div></div>
-<div class="list-card" onclick="showArticle('shadow-cult')"><div class="lc-icon">💀</div><div class="lc-info"><h4>Shadow Cult of Vortan</h4><p>Servants of the Shadow King</p></div></div>
-<div class="list-card" onclick="showArticle('verdant-kingdom')"><div class="lc-icon">👑</div><div class="lc-info"><h4>Verdant Kingdom</h4><p>The ruling realm of light</p></div></div>
-</div>
-</div>
-<div id="section-books" class="wiki-page">
-<button class="back-btn" onclick="showHome()">&#8592; Back to Wiki Home</button>
-<div class="books-section">
-<h2>📖 Read the YesPalm Series</h2>
-<div class="book-reader-list">
-<div class="book-item">
-<div class="book-cover">📘</div>
-<h4>YesPalm: The Awakening</h4>
-<p>Book 1 - The journey begins</p>
-<button class="read-btn" onclick="openReader('book1')">Read Now</button>
-</div>
-<div class="book-item">
-<div class="book-cover">📙</div>
-<h4>YesPalm: Shadows Rise</h4>
-<p>Book 2 - Darkness spreads</p>
-<button class="read-btn" onclick="openReader('book2')">Read Now</button>
-</div>
-<div class="book-item">
-<div class="book-cover">📚</div>
-<h4>YesPalm: The Verdant War</h4>
-<p>Book 3 - War for the realms</p>
-<button class="read-btn" onclick="openReader('book3')">Read Now</button>
-</div>
-<div class="book-item">
-<div class="book-cover">📕</div>
-<h4>YesPalm: The Palm Stone</h4>
-<p>Book 4 - The ultimate quest</p>
-<button class="read-btn" onclick="openReader('book4')">Read Now</button>
-</div>
-<div class="book-item">
-<div class="book-cover">📗</div>
-<h4>YesPalm: Final Dawn</h4>
-<p>Book 5 - The final battle</p>
-<button class="read-btn" onclick="openReader('book5')">Read Now</button>
-</div>
-</div>
+<div class="list-card" onclick="showArticle('kael')"><div class="lc-icon">⚔️</div><div class="lc-info"><h4>Kael Voss</h4><p>The 7-Thread Bearer</p></div></div>
+<div class="list-card" onclick="showArticle('sera')"><div class="lc-icon">🧠</div><div class="lc-info"><h4>Seraphina Voss</h4><p>Mind Threader / Analyst</p></div></div>
+<div class="list-card" onclick="showArticle('brynn')"><div class="lc-icon">⛰️</div><div class="lc-info"><h4>Brynn Ashrock</h4><p>Stone Threader / Guardian</p></div></div>
+<div class="list-card" onclick="showArticle('cassia')"><div class="lc-icon">👥</div><div class="lc-info"><h4>Cassia Vane</h4><p>Shadow Threader / Archivist</p></div></div>
+<div class="list-card" onclick="showArticle('rin')"><div class="lc-icon">🌌</div><div class="lc-info"><h4>Rin</h4><p>Void Threader / Diagnostic</p></div></div>
+<div class="list-card" onclick="showArticle('callus')"><div class="lc-icon">👴</div><div class="lc-info"><h4>Callus</h4><p>Master Trainer / Mentor</p></div></div>
 </div>
 </div>
 <div id="article-kael" class="wiki-page">
-<button class="back-btn" onclick="showSection('characters')">&#8592; Back to Characters</button>
+<button class="back-btn" onclick="showSection('characters')">← Back to Characters</button>
 <div class="page-header">
-<div class="page-breadcrumb"><a href="#" onclick="showHome()">Wiki</a> &rsaquo; <a href="#" onclick="showSection('characters')">Characters</a> &rsaquo; Kael Dawnstrider</div>
-<h1>Kael Dawnstrider</h1>
-<div class="page-subtitle">The Chosen Palm Bearer &bull; Hero of the Verdant Realm</div>
-<div class="page-tags"><span class="tag">Hero</span><span class="tag">Palm Bearer</span><span class="tag">Protagonist</span><span class="tag">Swordsman</span></div>
+<div class="page-breadcrumb"><a href="#" onclick="showHome()">Archive</a> › <a href="#" onclick="showSection('characters')">Characters</a> › Kael Voss</div>
+<h1>Kael Voss</h1>
+<p class="page-subtitle">The 7-Thread Bearer • The Constellation Center</p>
+<div class="page-tags"><span class="tag">7-Threads</span><span class="tag">Constellation</span><span class="tag">Ignar</span></div>
 </div>
 <div class="page-body">
 <div class="page-content">
 <h2>Overview</h2>
-<p>Kael Dawnstrider is the central hero of the YesPalm series. Born in the humble village of Greenhollow on the outskirts of YesPalm City, he was destined from birth to carry the legendary Palm Stone. Raised by his grandmother after the mysterious disappearance of his parents, Kael grew into a fierce yet compassionate warrior whose sense of justice drives every decision he makes.</p>
-<div class="quote-box">&ldquo;The Palm does not choose the strongest. It chooses the most worthy.&rdquo; &mdash; Elder Moros, upon Kael&rsquo;s awakening</div>
+<p>Kael Voss is the central figure of the Constellation, born in the Ashen Quarter of Ignar. He is the first 7-thread bearer recorded in three millennia. His journey from dock work to stabilizing the dimensional boundary redefined the relationship between threading and the physical world.</p>
+<div class="quote-box">"You became ready by moving forward, by doing the next thing, by facing whatever the world required of you."</div>
 <h2>Early Life</h2>
-<p>As a child, Kael showed no signs of magical ability, making him an outcast among the gifted youth of Greenhollow. He trained obsessively with a wooden sword, honing his physical abilities while his peers practiced their essence control. His grandmother, a former Palm Order initiate, secretly taught him the old ways of palm-reading and elemental attunement.</p>
-<p>At age sixteen, Kael discovered a glowing shard buried beneath the village elder tree. This was a fragment of the Palm Stone, and the moment he touched it, every essence in the seven realms trembled. Lord Vortan sensed the awakening from his Shadowrealm throne and dispatched his first wave of Shadow Crawlers to retrieve the shard.</p>
-<h2>Abilities &amp; Powers</h2>
+<p>Raised in the harsh environment of Ignar, Kael learned the "arithmetic of survival" early. He worked the docks, carrying kelp paste, which provided the foundational discipline required for his later mastery of threading.</p>
+<h2>Abilities</h2>
 <ul>
-<li><strong>Palm Resonance</strong> - Can harmonize with all seven essences simultaneously</li>
-<li><strong>Dawnstrike</strong> - A sword technique that channels pure light essence through the blade</li>
-<li><strong>Essence Reading</strong> - Can sense the magical aura of any being or object</li>
-<li><strong>Palm Shield</strong> - A defensive barrier woven from palm essence energy</li>
-<li><strong>Realm Walk</strong> - After book 3, can briefly step between realms</li>
-</ul>
-<h2>Personality</h2>
-<p>Kael is defined by his unwavering sense of justice and his deep loyalty to those he loves. He often struggles with the weight of being &ldquo;the chosen one&rdquo; and questions whether destiny is real or whether people forge their own paths. This internal conflict makes him relatable and deeply human despite his extraordinary abilities.</p>
-<p>He has a dry sense of humor that surfaces in tense moments, and a habit of talking to his sword, which he named &ldquo;Greenlight&rdquo; after the glow of palm essence that coats its blade in battle.</p>
-<h2>Relationships</h2>
-<ul>
-<li><strong>Seraphina Moonwhisper</strong> - Close ally and romantic interest. Their magical abilities complement each other perfectly.</li>
-<li><strong>Elder Moros</strong> - Mentor and father figure. Kael&rsquo;s greatest source of wisdom and guidance.</li>
-<li><strong>Zara the Swift</strong> - Best friend and fellow adventurer. Comic relief and fierce protector.</li>
-<li><strong>Lord Vortan</strong> - Sworn enemy. Kael later discovers a devastating connection between them.</li>
+<li><strong>7-Thread Awareness</strong>: Capable of maintaining simultaneous awareness of all seven core essences.</li>
+<li><strong>Harmonic Coupling</strong>: The ability to synchronize with other threaders to amplify healing protocols.</li>
+<li><strong>Void Sensitivity</strong>: Detects structural changes in the Primordial Prison.</li>
 </ul>
 </div>
-<div>
+<div class="infobox-container">
 <div class="infobox">
-<div class="infobox-header">Kael Dawnstrider</div>
+<div class="infobox-header">Kael Voss</div>
 <div class="infobox-img">⚔️</div>
 <table class="infobox-table">
-<tr><td>Race</td><td>Human</td></tr>
-<tr><td>Age</td><td>19 (Book 1)</td></tr>
-<tr><td>Origin</td><td>Greenhollow</td></tr>
-<tr><td>Affiliation</td><td>Palm Order</td></tr>
-<tr><td>Weapon</td><td>Greenlight Sword</td></tr>
-<tr><td>Essence</td><td>All Seven</td></tr>
-<tr><td>Status</td><td>Alive</td></tr>
-<tr><td>First Appears</td><td>Book 1, Ch. 1</td></tr>
-</table>
-</div>
-<div class="toc" style="margin-top:16px">
-<h4>Contents</h4>
-<ol>
-<li><a href="#">Overview</a></li>
-<li><a href="#">Early Life</a></li>
-<li><a href="#">Abilities</a></li>
-<li><a href="#">Personality</a></li>
-<li><a href="#">Relationships</a></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div id="article-vortan" class="wiki-page">
-<button class="back-btn" onclick="showSection('characters')">&#8592; Back to Characters</button>
-<div class="page-header">
-<div class="page-breadcrumb"><a href="#" onclick="showHome()">Wiki</a> &rsaquo; <a href="#" onclick="showSection('characters')">Characters</a> &rsaquo; Lord Vortan</div>
-<h1>Lord Vortan</h1>
-<div class="page-subtitle">The Shadow King &bull; Ruler of the Shadowrealm</div>
-<div class="page-tags"><span class="tag">Villain</span><span class="tag">Shadow King</span><span class="tag">Antagonist</span><span class="tag">Sorcerer</span></div>
-</div>
-<div class="page-body">
-<div class="page-content">
-<h2>Overview</h2>
-<p>Lord Vortan is the primary antagonist of the YesPalm series, a sorcerer of immense power who commands the Shadow Essence with terrifying mastery. Once a celebrated member of the Palm Order, his descent into darkness began when he was denied the Palm Stone by Elder Moros. That rejection twisted into obsession, and obsession into malevolence.</p>
-<div class="quote-box">&ldquo;The Palm Order called me unworthy. I will show every realm what the unworthy are capable of.&rdquo; &mdash; Lord Vortan</div>
-<h2>History</h2>
-<p>Born Vortan Ashfeld in the city of Highpeak, he was once the most gifted student in the Golden Spire academy. His control over multiple essences was unrivaled, and many believed he would become the greatest Palm Bearer in history. However, his ambition and ruthlessness led Elder Moros to judge him unfit to carry the Palm Stone.</p>
-<p>Consumed by rage, Vortan delved into forbidden shadow magic, corrupting his essence and becoming something no longer fully human. He conquered the barren realm beyond the Veil of Tears and transformed it into the Shadowrealm, building a fortress of black crystal and shadow glass.</p>
-<h2>Powers</h2>
-<ul>
-<li><strong>Shadow Dominion</strong> - Absolute control over Shadow Essence; can reshape darkness physically</li>
-<li><strong>Soul Drain</strong> - Can siphon essence from living beings to fuel his power</li>
-<li><strong>Shadowrealm Command</strong> - Has complete awareness of everything within his realm</li>
-<li><strong>Shade Summoning</strong> - Creates and controls Shadow Crawlers, Shadow Knights and Shade Beasts</li>
-<li><strong>Essence Corruption</strong> - Can taint and corrupt the other six essences over time</li>
-</ul>
-<h2>The Hidden Truth</h2>
-<p>In Book 4, Kael discovers that Vortan is his biological uncle. Vortan&rsquo;s sister, Kael&rsquo;s mother, fled from Highpeak carrying infant Kael after Vortan&rsquo;s fall, hiding him in Greenhollow specifically to keep him safe from his uncle&rsquo;s vengeance. This revelation shakes Kael to his core and fuels the emotional climax of the final book.</p>
-</div>
-<div>
-<div class="infobox">
-<div class="infobox-header">Lord Vortan</div>
-<div class="infobox-img">👿</div>
-<table class="infobox-table">
-<tr><td>Race</td><td>Corrupted Human</td></tr>
-<tr><td>Age</td><td>Unknown (appears 40s)</td></tr>
-<tr><td>Origin</td><td>Highpeak</td></tr>
-<tr><td>Affiliation</td><td>Shadow Cult</td></tr>
-<tr><td>Weapon</td><td>Shadow Blade</td></tr>
-<tr><td>Essence</td><td>Shadow (corrupted all)</td></tr>
-<tr><td>Status</td><td>Alive (Books 1-4)</td></tr>
-<tr><td>First Appears</td><td>Book 1, Ch. 3</td></tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div id="article-yespalm-city" class="wiki-page">
-<button class="back-btn" onclick="showSection('locations')">&#8592; Back to Locations</button>
-<div class="page-header">
-<div class="page-breadcrumb"><a href="#" onclick="showHome()">Wiki</a> &rsaquo; <a href="#" onclick="showSection('locations')">Locations</a> &rsaquo; YesPalm City</div>
-<h1>YesPalm City</h1>
-<div class="page-subtitle">Capital of the Verdant Realm &bull; City of Eternal Palms</div>
-<div class="page-tags"><span class="tag">Capital City</span><span class="tag">Verdant Realm</span><span class="tag">Palm Order HQ</span></div>
-</div>
-<div class="page-body">
-<div class="page-content">
-<h2>Overview</h2>
-<p>YesPalm City is the radiant capital of the Verdant Realm, a sprawling metropolis built upon the world&rsquo;s richest deposits of palm essence. The city is famous for its towering golden spires, tree-lined boulevards, and the iridescent shimmer that palm essence gives the air at dawn and dusk. It is home to over two million people and serves as the political, magical, and cultural heart of the known world.</p>
-<h2>Geography &amp; Layout</h2>
-<p>The city is divided into seven districts, each aligned with one of the seven essences. The Palm District at the center houses the Grand Palm Order Citadel, a magnificent structure built from enchanted white stone and living palm wood. The outer districts radiate outward in a hexagonal pattern, connected by grand essence-lit boulevards.</p>
-<ul>
-<li><strong>The Palm District</strong> - Center of city; home to the Citadel and Elder Council</li>
-<li><strong>The Flame Quarter</strong> - Industrial and military district</li>
-<li><strong>The Moon District</strong> - Academic and magical research hub</li>
-<li><strong>The Verdant Market</strong> - Commerce and trade district</li>
-<li><strong>The Crystal Harbor</strong> - Port connecting to the Crystal Sea</li>
-</ul>
-<h2>History</h2>
-<p>YesPalm City was founded over two thousand years ago by the First Palm Bearer, Aelindra the Radiant, who planted the first Palm Tree and channeled its essence to create the foundation stones of the Citadel. The city grew around this sacred site, with every generation adding to its grandeur.</p>
-</div>
-<div>
-<div class="infobox">
-<div class="infobox-header">YesPalm City</div>
-<div class="infobox-img">🏙️</div>
-<table class="infobox-table">
-<tr><td>Type</td><td>Capital City</td></tr>
-<tr><td>Realm</td><td>Verdant Realm</td></tr>
-<tr><td>Population</td><td>2.3 million</td></tr>
-<tr><td>Ruler</td><td>King Aldric</td></tr>
-<tr><td>Districts</td><td>7</td></tr>
-<tr><td>Founded</td><td>2,000 years ago</td></tr>
-<tr><td>Key Feature</td><td>The Grand Citadel</td></tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div id="article-palm-stone" class="wiki-page">
-<button class="back-btn" onclick="showSection('artifacts')">&#8592; Back to Artifacts</button>
-<div class="page-header">
-<div class="page-breadcrumb"><a href="#" onclick="showHome()">Wiki</a> &rsaquo; <a href="#" onclick="showSection('artifacts')">Artifacts</a> &rsaquo; The Palm Stone</div>
-<h1>The Palm Stone</h1>
-<div class="page-subtitle">The Seven-Essence Gem &bull; Most Powerful Artifact in Existence</div>
-<div class="page-tags"><span class="tag">Legendary Artifact</span><span class="tag">Seven Essences</span><span class="tag">Ancient</span></div>
-</div>
-<div class="page-body">
-<div class="page-content">
-<h2>Overview</h2>
-<p>The Palm Stone is the most powerful artifact in the known world, a gem of impossible beauty that contains within it the concentrated force of all seven magical essences. It was created at the dawn of the world when the original palm tree at the center of all realms shed its first seed. That seed crystallized over millennia into the Palm Stone, a fist-sized gem that glows with shifting colors representing each essence.</p>
-<div class="quote-box">&ldquo;To hold the Palm Stone is to hold the heartbeat of the world itself.&rdquo; &mdash; The Tome of Origins</div>
-<h2>Properties</h2>
-<ul>
-<li><strong>Essence Amplification</strong> - Multiplies the bearer&rsquo;s magical power a hundredfold</li>
-<li><strong>Seven-Color Glow</strong> - Shifts color based on the dominant essence being used</li>
-<li><strong>Corruption Resistance</strong> - Cannot be permanently corrupted by shadow essence</li>
-<li><strong>Bearer Bond</strong> - Bonds permanently to its chosen bearer; cannot be used by others</li>
-<li><strong>Realm Anchor</strong> - Helps maintain the boundaries between the seven realms</li>
-</ul>
-<h2>History</h2>
-<p>The Palm Stone has had seven bearers throughout history, each chosen at a time of great crisis. The Stone went dormant for three centuries before its fragment was discovered by Kael, signaling a new era of darkness and the need for a new bearer. Vortan&rsquo;s obsession with the Stone is a central plot driver throughout the series.</p>
-</div>
-<div>
-<div class="infobox">
-<div class="infobox-header">The Palm Stone</div>
-<div class="infobox-img">💎</div>
-<table class="infobox-table">
-<tr><td>Type</td><td>Legendary Gem</td></tr>
-<tr><td>Created</td><td>Dawn of Time</td></tr>
-<tr><td>Current Bearer</td><td>Kael Dawnstrider</td></tr>
-<tr><td>Essences</td><td>All Seven</td></tr>
-<tr><td>Past Bearers</td><td>7</td></tr>
-<tr><td>Location</td><td>With Kael</td></tr>
+<tr><td>Status</td><td>Active</td></tr>
+<tr><td>Origin</td><td>Ignar</td></tr>
+<tr><td>Affiliation</td><td>The Compact</td></tr>
+<tr><td>Age</td><td>30 (Mature Phase)</td></tr>
+<tr><td>Threads</td><td>All Seven</td></tr>
 </table>
 </div>
 </div>
@@ -540,88 +262,21 @@ a:hover{color:#f0c060;text-decoration:underline}
 </div>
 <div id="reader-modal" class="reader-modal">
 <div class="reader-inner">
-<div class="reader-header">
-<h2 id="reader-title">Book Title</h2>
-<button class="close-reader" onclick="closeReader()">&#10005;</button>
-</div>
+<div class="reader-header"><h2 id="reader-title">Record Reader</h2><button class="close-reader" onclick="closeReader()">×</button></div>
 <div class="reader-body" id="reader-body"></div>
 </div>
 </div>
 <script>
 var bookData = {
-book1: {
-title: 'YesPalm: The Awakening',
-content: '<h3>Chapter 1: The Shard of Light</h3><p>The village of Greenhollow had never seen such a strange morning. The elder tree at the center of the square was glowing faintly gold, its roots pulsing with a light that no one could explain. Kael Dawnstrider stood before it with his grandmother, watching the bark shimmer like sunlight on water.</p><p>"Grandmother," he whispered, "what is happening to it?"</p><p>Mara Dawnstrider pressed her weathered hand against the bark. Her eyes closed, and for a moment she looked younger somehow, like the woman she had been before age had carved its lines into her face. Then her eyes opened, wide with something that looked like both wonder and fear.</p><p>"It is time," she said simply.</p><p>Under the roots, Kael found the shard. A piece of crystal no larger than his thumb, but when his fingers closed around it, the world exploded into color. He could feel every living thing for miles in every direction. The birds in the branches. The worms in the soil. The essence of the palm tree above him, singing in a language older than words.</p><p>And far, far away, across realms and through the veil, something dark turned its attention toward him.</p><h3>Chapter 2: The Shadow Crawlers</h3><p>They came at midnight. Five of them, shadow-black and moving like spilled ink across the cobblestones of Greenhollow. Kael saw them from his window and grabbed his practice sword without thinking, his heart hammering but his hands steady.</p><p>The shard glowed in his pocket. He could feel it responding to the darkness of the creatures, pulsing like a warning heartbeat. He gripped the sword tighter and went downstairs.</p><p>The first Shadow Crawler turned its eyeless face toward him and hissed. Kael swung. The blade caught the creature across its side and where it touched, light flared. The creature recoiled with a sound like tearing fabric. The shard grew hotter in his pocket.</p><p>"So," said a voice from the darkness at the edge of the village, "the Palm shard has chosen. How very interesting." The voice was cold and smooth and ancient. Kael looked up and saw only shadow where the voice had been. The Shadow Crawlers retreated into the dark, and the night went quiet.</p><p>Kael stood in the middle of the empty street, the glowing shard in his hand, and understood that his life had just changed forever.</p>'
-},
-book2: {
-title: 'YesPalm: Shadows Rise',
-content: '<h3>Chapter 1: The Spreading Dark</h3><p>Three months after the incident at Greenhollow, the shadows had reached as far as the Flame Quarter of YesPalm City. Citizens reported waking to find their essence-lamps dimmed, their fires smothered, their magical tools unresponsive. The Palm Order held emergency sessions in the Grand Citadel while merchants whispered in the markets about the old prophecies.</p><p>Kael arrived in the city with Zara at his side, the Palm shard now threaded on a cord around his neck. The Crystal Harbor shimmered in the afternoon sun, but even here something felt wrong. The water was slightly darker than it should have been. The gulls were silent.</p><p>"I do not like this place," Zara said, her hand resting on the throwing knives at her belt. "Something is watching."</p><p>She was right. From the rooftop of a warehouse, a hooded figure observed their arrival, then vanished in a swirl of shadow before Kael could focus on it.</p><h3>Chapter 2: The Moon Mage</h3><p>Seraphina Moonwhisper found them before they found her. She appeared at their inn table that evening, uninvited, and sat across from Kael with eyes the silver-white color of moonlight on still water.</p><p>"You carry the Palm shard," she said without preamble. "The entire Moon District can sense it. I have been waiting for you."</p><p>"Most people introduce themselves first," Zara said, eyeing the newcomer with professional suspicion.</p><p>"Seraphina of the Golden Spire," she said, inclining her head. "And there is no time for pleasantries. Lord Vortan has placed his shadow network across seventeen districts now. If the shard is not united with the other fragments in the next moon cycle, the Shadow Essence will have spread too far to contain."</p><p>Kael looked at her steadily. "How many fragments are there?"</p><p>"Six more," she said. "Scattered across the most dangerous places in every realm." She smiled slightly, and it was not a reassuring smile. "I hope you are as capable as the Prophecy suggests."</p>'
-},
-book3: {
-title: 'YesPalm: The Verdant War',
-content: '<h3>Prologue: The Fall of Highpeak</h3><p>The battle for Highpeak lasted three days. When it was over, the city that had once been the greatest seat of magical learning in the known world was a ruin of shadow glass and broken spires. Lord Vortan had not even been present for most of it. He had sent his Shadow Knights and let them work.</p><p>The Palm Order recovered two thousand survivors. They named it the Darkening of Highpeak, and it became the event that finally convinced the seven realms that war was no longer avoidable.</p><h3>Chapter 1: The War Council</h3><p>Kael had never been to the Grand Council Chamber before. It was larger than he had expected, a circular room of white stone and gold leaf where the representatives of all seven realms sat in tiered semicircles facing a central speaking platform. He stood on that platform now, the assembled Palm Stone fragments glowing in their mounting on his belt, and felt very aware that he was nineteen years old and had never led anything larger than a three-person party.</p><p>"The Shadow Essence is spreading at twice the rate we projected," Elder Moros said from his seat at the head of the council. "Our estimates give us fourteen months before the Shadowrealm consumes the Verdant borderlands entirely."</p><p>"Then we stop him before fourteen months," Kael said.</p><p>The council chamber fell silent. A dozen elder statesmen stared at him with a mixture of hope and barely concealed skepticism. Seraphina, seated to his right, touched his arm lightly. Zara, standing behind him, made a small sound that might have been a suppressed laugh.</p><p>"You make it sound simple, boy," said Lord Aldric from his throne-like seat.</p><p>"No," Kael said. "I make it sound necessary. There is a difference."</p>'
-},
-book4: {
-title: 'YesPalm: The Palm Stone',
-content: '<h3>Chapter 1: The Completed Stone</h3><p>The moment the seventh fragment clicked into place, Kael ceased to exist for approximately three seconds. That was how he would describe it later, imprecisely and inadequately, to anyone who asked. He was simply gone, and then he was back, and the world was different.</p><p>He was standing in the armory of the Citadel. Six people were staring at him. The Palm Stone in his hand was whole for the first time in three centuries, a gem the size of his fist cycling through every color in existence and several that had no names.</p><p>"Are you alright?" Seraphina asked carefully.</p><p>"I heard everything," Kael said. His voice sounded strange to his own ears. "Every realm at once. Every essence. Every living thing." He looked at his hand. "Is this what it always feels like?"</p><p>"I do not know," Elder Moros said quietly. "No living person has held the complete Stone in three hundred years."</p><h3>Chapter 2: The Truth</h3><p>The revelation came from Vortan himself. He had allowed himself to be captured, which should have been warning enough. He sat in the Citadel prison and looked at Kael through the bars with those terrible cold eyes, and smiled.</p><p>"My sister\'s son," he said. "She hid you very well. I will give her that much credit."</p><p>The silence in the corridor was absolute. Kael felt the Palm Stone pulse once, hot and insistent, as if confirming what he had just heard.</p><p>"You are lying," he said, because he had to say something.</p><p>"I never lie," Vortan said. "I find the truth so much more devastating."</p>'
-},
-book5: {
-title: 'YesPalm: Final Dawn',
-content: '<h3>Chapter 1: The Last Night</h3><p>The night before the final battle, Kael sat on the highest rampart of the Citadel and watched the Shadowrealm\'s darkness rolling toward them across the horizon like a slow black tide. He had spent the evening writing letters he hoped he would never need anyone to read.</p><p>Seraphina found him there near midnight. She sat beside him without speaking, her moon-staff resting across her knees, and for a long time they simply watched the darkness together.</p><p>"Are you afraid?" she asked eventually.</p><p>"Yes," he said immediately. "Very."</p><p>She leaned her head against his shoulder. "Good," she said. "The afraid ones fight harder. They have more to lose."</p><h3>Final Chapter: The Dawn</h3><p>It ended at sunrise.</p><p>Vortan was not defeated by force, in the end. He was defeated by a choice. Kael, holding the Palm Stone at its full power, could have destroyed his uncle completely. Could have unmade him down to the last particle of shadow. The Stone gave him that power and it would have been easy.</p><p>Instead, he offered his hand.</p><p>"Come back," he said. "It is not too late."</p><p>For one very long moment, something flickered in Vortan\'s cold eyes. Something old and buried and almost forgotten. The man he had been before the rejection and the rage and the shadow had eaten everything good in him.</p><p>Then the sun broke the horizon, and its first light struck the Palm Stone, and the light that blazed out was every color at once, and it was warm, and it was the end, and it was the beginning.</p><p>The darkness retreated. The realms held their breath. And then, slowly, the birds began to sing.</p>'
-}
+book1: { title: 'Embers of the Fractured Sky', content: '<h3>Chapter 1: The Ashen Quarter</h3><p>Kael looked at her with an expression that she could not immediately categorize. "That’s the most clinical compliment I’ve ever received," he said. Lyra didn\'t give compliments. She provided assessments. The arithmetic of survival had taught them this.</p>' },
+book2: { title: 'The Weight of Wind and Stone', content: '<h3>The Threshold</h3><p>The world healed. Not dramatically. Not heroically. With the specific, sustained, unglamorous persistence of a living system doing what living systems do—repair damage, restore function, grow. The boundary thickened.</p>' },
+book3: { title: 'Dawn of the New Realm', content: '<h3>The Twelfth World</h3><p>The dawn of the new realm wasn’t a destination. It was a direction. Kael held the Void thread and the potential and the aliveness of things that are exactly what they are in the place where they started.</p>' }
 };
-function showHome() {
-document.querySelectorAll('.wiki-home,.wiki-page').forEach(function(el){el.style.display='none'});
-document.getElementById('wiki-home').style.display='block';
-document.querySelectorAll('.sidebar-section ul li a').forEach(function(a){a.classList.remove('active')});
-document.getElementById('nav-home').classList.add('active');
-window.scrollTo(0,0);
-}
-function showSection(name) {
-document.querySelectorAll('.wiki-home,.wiki-page').forEach(function(el){el.style.display='none'});
-var el = document.getElementById('section-'+name);
-if(el) el.style.display='block';
-document.querySelectorAll('.sidebar-section ul li a').forEach(function(a){a.classList.remove('active')});
-var nav = document.getElementById('nav-'+name);
-if(nav) nav.classList.add('active');
-window.scrollTo(0,0);
-}
-function showArticle(id) {
-document.querySelectorAll('.wiki-home,.wiki-page').forEach(function(el){el.style.display='none'});
-var el = document.getElementById('article-'+id);
-if(el) { el.style.display='block'; } else {
-var home = document.getElementById('wiki-home');
-home.style.display='block';
-}
-window.scrollTo(0,0);
-}
-function openReader(bookId) {
-var data = bookData[bookId];
-if(!data) return;
-document.getElementById('reader-title').textContent = data.title;
-document.getElementById('reader-body').innerHTML = data.content;
-document.getElementById('reader-modal').style.display='block';
-document.body.style.overflow='hidden';
-}
-function closeReader() {
-document.getElementById('reader-modal').style.display='none';
-document.body.style.overflow='';
-}
-function searchWiki(query) {
-if(!query || query.length < 2) return;
-var q = query.toLowerCase();
-var results = [
-{id:'kael',title:'Kael Dawnstrider',cat:'Character',keywords:'kael hero palm bearer protagonist swordsman dawnstrider'},
-{id:'vortan',title:'Lord Vortan',cat:'Character',keywords:'vortan villain shadow king antagonist'},
-{id:'yespalm-city',title:'YesPalm City',cat:'Location',keywords:'yespalm city capital verdant realm'},
-{id:'palm-stone',title:'The Palm Stone',cat:'Artifact',keywords:'palm stone artifact gem seven essences'}
-];
-var found = results.filter(function(r){return r.keywords.indexOf(q)>=0||r.title.toLowerCase().indexOf(q)>=0});
-if(found.length > 0) showArticle(found[0].id);
-}
-document.getElementById('reader-modal').addEventListener('click', function(e){
-if(e.target===this) closeReader();
-});
+function showHome(){document.querySelectorAll('.wiki-home,.wiki-page').forEach(function(el){el.style.display='none'});document.getElementById('wiki-home').style.display='block';}
+function showSection(name){document.querySelectorAll('.wiki-home,.wiki-page').forEach(function(el){el.style.display='none'});var el=document.getElementById('section-'+name);if(el)el.style.display='block';}
+function showArticle(id){document.querySelectorAll('.wiki-home,.wiki-page').forEach(function(el){el.style.display='none'});var el=document.getElementById('article-'+id);if(el)el.style.display='block';}
+function openReader(id){var b=bookData[id];document.getElementById('reader-title').textContent=b.title;document.getElementById('reader-body').innerHTML=b.content;document.getElementById('reader-modal').style.display='block';}
+function closeReader(){document.getElementById('reader-modal').style.display='none';}
 </script>
 </body>
 </html>
