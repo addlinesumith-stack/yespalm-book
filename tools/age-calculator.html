@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - Calculate Your Age Accurately | YesPalm</title>
+<meta name="description" content="Free age calculator to find your exact age in years, months, days. Calculate age from date of birth instantly.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fff;color:#1f2937;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{background:#fff;border-bottom:1px solid #e5e7eb;padding:15px 0}
+nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:700;color:#2563EB}
+.nav-links a{margin-left:25px;text-decoration:none;color:#4b5563}
+.nav-links a:hover{color:#2563EB}
+.tool-section{margin:40px 0}
+h1{font-size:32px;color:#111827;margin-bottom:10px}
+.subtitle{color:#6b7280;margin-bottom:30px}
+.calculator-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}
+@media(max-width:768px){.calculator-grid{grid-template-columns:1fr}}
+.input-card,.result-card{background:#f9fafb;padding:30px;border-radius:12px;border:1px solid #e5e7eb}
+.input-group{margin-bottom:20px}
+label{display:block;margin-bottom:8px;font-weight:600;color:#374151}
+input{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;font-size:16px}
+input:focus{outline:none;border-color:#2563EB}
+.btn{background:#2563EB;color:#fff;padding:14px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;width:100%;margin-top:10px}
+.btn:hover{background:#1d4ed8}
+.result-item{padding:15px;background:#fff;border-radius:8px;margin-bottom:15px;border-left:4px solid #2563EB}
+.result-label{font-size:14px;color:#6b7280}
+.result-value{font-size:24px;font-weight:700;color:#111827;margin-top:5px}
+.ad-placeholder{background:#f3f4f6;border:2px dashed #d1d5db;padding:40px;text-align:center;color:#9ca3af;margin:30px 0;border-radius:8px}
+footer{background:#111827;color:#fff;padding:40px 0;margin-top:60px}
+.footer-content{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.footer-section h3{margin-bottom:15px}
+.footer-section a{display:block;color:#9ca3af;text-decoration:none;margin-bottom:8px}
+.footer-section a:hover{color:#fff}
+.footer-bottom{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid #374151;color:#9ca3af}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav>
+<div class="logo">YesPalm</div>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/blog">Blog</a>
+<a href="/privacy.html">Privacy</a>
+</div>
+</nav>
+</div>
+</header>
+<div class="container">
+<div class="tool-section">
+<h1>Age Calculator</h1>
+<p class="subtitle">Calculate your exact age in years, months, and days</p>
+<div class="ad-placeholder">Advertisement Space (728x90)</div>
+<div class="calculator-grid">
+<div class="input-card">
+<h2>Date of Birth</h2>
+<div class="input-group">
+<label>Enter Your Birth Date</label>
+<input type="date" id="birthDate" placeholder="Select date">
+</div>
+<div class="input-group">
+<label>Calculate Age On (Optional)</label>
+<input type="date" id="calculateDate" placeholder="Select date">
+</div>
+<button class="btn" onclick="calculateAge()">Calculate Age</button>
+</div>
+<div class="result-card">
+<h2>Your Age</h2>
+<div id="results" style="display:none">
+<div class="result-item">
+<div class="result-label">Years</div>
+<div class="result-value" id="years">0</div>
+</div>
+<div class="result-item">
+<div class="result-label">Months</div>
+<div class="result-value" id="months">0</div>
+</div>
+<div class="result-item">
+<div class="result-label">Days</div>
+<div class="result-value" id="days">0</div>
+</div>
+<div class="result-item">
+<div class="result-label">Total Days</div>
+<div class="result-value" id="totalDays">0</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ad-placeholder">Advertisement Space (728x90)</div>
+</div>
+</div>
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>YesPalm</h3>
+<p>Free online tools for everyone. No signup required.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="/">Home</a>
+<a href="/blog">Blog</a>
+<a href="/privacy.html">Privacy Policy</a>
+</div>
+<div class="footer-section">
+<h3>Popular Tools</h3>
+<a href="/tools/word-counter.html">Word Counter</a>
+<a href="/tools/json-formatter.html">JSON Formatter</a>
+<a href="/tools/password-generator.html">Password Generator</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 YesPalm.com - All rights reserved</p>
+</div>
+</div>
+</footer>
+<script>
+function calculateAge(){
+const birthDate=document.getElementById('birthDate').value;
+if(!birthDate)return alert('Please enter your birth date');
+const birth=new Date(birthDate);
+const today=document.getElementById('calculateDate').value?new Date(document.getElementById('calculateDate').value):new Date();
+let years=today.getFullYear()-birth.getFullYear();
+let months=today.getMonth()-birth.getMonth();
+let days=today.getDate()-birth.getDate();
+if(days<0){
+months--;
+const lastMonth=new Date(today.getFullYear(),today.getMonth(),0);
+days+=lastMonth.getDate();
+}
+if(months<0){
+years--;
+months+=12;
+}
+const totalDays=Math.floor((today-birth)/(1000*60*60*24));
+document.getElementById('years').textContent=years;
+document.getElementById('months').textContent=months;
+document.getElementById('days').textContent=days;
+document.getElementById('totalDays').textContent=totalDays;
+document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>
