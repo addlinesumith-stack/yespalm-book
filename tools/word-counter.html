@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Word Counter Tool | YesPalm</title>
+  <meta name="description" content="Free online word counter tool. Count words, characters, sentences, paragraphs, and reading time instantly.">  
+  <meta name="keywords" content="word counter, character counter, text counter, word count tool">
+  <link rel="canonical" href="https://yespalm.com/tools/word-counter.html">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1f2937; background: #f9fafb; }
+    header { background: white; border-bottom: 1px solid #e5e7eb; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: #1f2937; text-decoration: none; }
+    .logo span { color: #2563EB; }
+    .back-link { color: #6b7280; text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { color: #2563EB; }
+    .container { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1f2937; }
+    .subtitle { color: #6b7280; margin-bottom: 2rem; }
+    .ad-placeholder { background: #f3f4f6; border: 2px dashed #d1d5db; border-radius: 8px; padding: 1.5rem; text-align: center; color: #9ca3af; font-size: 0.875rem; margin: 1.5rem 0; }
+    textarea { width: 100%; min-height: 300px; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; font-family: inherit; resize: vertical; }
+    textarea:focus { outline: none; border-color: #2563EB; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .stat-card { background: white; padding: 1.25rem; border-radius: 8px; border: 1px solid #e5e7eb; text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: 700; color: #2563EB; }
+    .stat-label { font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem; }
+    .actions { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+    .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: #2563EB; color: white; }
+    .btn-primary:hover { background: #1e40af; }
+    .btn-secondary { background: white; color: #1f2937; border: 1px solid #e5e7eb; }
+    .btn-secondary:hover { background: #f9fafb; }
+    .features { background: white; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border: 1px solid #e5e7eb; }
+    .features h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .features ul { margin-left: 1.5rem; }
+    .features li { margin-bottom: 0.5rem; }
+    footer { background: #1f2937; color: #9ca3af; padding: 2rem 1.5rem; margin-top: 4rem; text-align: center; }
+    footer a { color: #9ca3af; text-decoration: none; }
+    footer a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="logo">Yes<span>Palm</span></a>
+      <a href="/" class="back-link">← Back to Tools</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h1>📝 Word Counter</h1>
+    <p class="subtitle">Count words, characters, sentences, paragraphs, and reading time in real-time</p>
+    
+    <div class="ad-placeholder">Ad Space - Rectangle (300x250)</div>
+    
+    <textarea id="textInput" placeholder="Start typing or paste your text here..."></textarea>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="wordCount">0</div>
+        <div class="stat-label">Words</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="charCount">0</div>
+        <div class="stat-label">Characters</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="charNoSpace">0</div>
+        <div class="stat-label">No Spaces</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="sentenceCount">0</div>
+        <div class="stat-label">Sentences</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="paraCount">0</div>
+        <div class="stat-label">Paragraphs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="readTime">0</div>
+        <div class="stat-label">Read Time (min)</div>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button class="btn btn-primary" onclick="copyText()">Copy Text</button>
+      <button class="btn btn-secondary" onclick="clearText()">Clear</button>
+      <button class="btn btn-secondary" onclick="downloadText()">Download TXT</button>
+    </div>
+    
+    <div class="ad-placeholder">Ad Space - Between Results</div>
+    
+    <div class="features">
+      <h2>About This Word Counter</h2>
+      <ul>
+        <li><strong>Word Count:</strong> Total number of words in your text</li>
+        <li><strong>Character Count:</strong> Total characters including spaces</li>
+        <li><strong>No Spaces:</strong> Characters excluding spaces</li>
+        <li><strong>Sentences:</strong> Number of sentences detected</li>
+        <li><strong>Paragraphs:</strong> Number of paragraphs (separated by line breaks)</li>
+        <li><strong>Reading Time:</strong> Estimated time to read (based on 200 words/minute)</li>
+      </ul>
+    </div>
+    
+    <div class="features">
+      <h2>Recommended Resources</h2>
+      <p style="color: #6b7280; margin-bottom: 1rem;">Looking for more writing tools and resources?</p>
+      <ul>
+        <li><a href="#">Grammarly Premium</a> - Advanced grammar and style checking</li>
+        <li><a href="#">Hemingway Editor</a> - Make your writing bold and clear</li>
+        <li><a href="#">ProWritingAid</a> - Comprehensive writing assistant</li>
+      </ul>
+    </div>
+  </div>
+  
+  <footer>
+    <p>&copy; 2026 YesPalm. All rights reserved. | <a href="/privacy.html">Privacy</a> | <a href="/terms.html">Terms</a></p>
+  </footer>
+  
+  <script>
+    const textarea = document.getElementById('textInput');
+    
+    textarea.addEventListener('input', updateStats);
+    
+    function updateStats() {
+      const text = textarea.value;
+      const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+      const chars = text.length;
+      const charsNoSpace = text.replace(/\s/g, '').length;
+      const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+      const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0).length;
+      const readTime = Math.ceil(words.length / 200);
+      
+      document.getElementById('wordCount').textContent = words.length;
+      document.getElementById('charCount').textContent = chars;
+      document.getElementById('charNoSpace').textContent = charsNoSpace;
+      document.getElementById('sentenceCount').textContent = sentences;
+      document.getElementById('paraCount').textContent = paragraphs;
+      document.getElementById('readTime').textContent = readTime;
+    }
+    
+    function copyText() {
+      textarea.select();
+      document.execCommand('copy');
+      alert('Text copied to clipboard!');
+    }
+    
+    function clearText() {
+      if (confirm('Clear all text?')) {
+        textarea.value = '';
+        updateStats();
+      }
+    }
+    
+    function downloadText() {
+      const text = textarea.value;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'word-count-text.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
