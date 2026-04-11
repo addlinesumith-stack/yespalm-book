@@ -85,4 +85,14 @@
 <priority>0.5</priority>
 <changefreq>yearly</changefreq>
 </url>
+<url>
+<loc>https://www.yespalm.com/about.html</loc>
+<priority>0.7</priority>
+<changefreq>monthly</changefreq>
+</url>
+<url>
+<loc>https://www.yespalm.com/contact.html</loc>
+<priority>0.7</priority>
+<changefreq>monthly</changefreq>
+</url>
 </urlset>
