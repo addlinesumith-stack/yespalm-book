@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Text to Speech - Listen to Any Text Online | YesPalm</title>
+  <meta name="description" content="Free online text to speech tool. Paste any text and hear it read aloud using your browser. Adjust speed and voice. No signup required.">
+  <meta name="keywords" content="text to speech, TTS, read aloud, speech synthesis, online TTS tool">
+  <link rel="canonical" href="https://yespalm.com/tools/text-to-speech.html">
+  <meta name="robots" content="index, follow">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Text to Speech",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Free online text to speech tool. Listen to any text using browser SpeechSynthesis API.",
+    "url": "https://yespalm.com/tools/text-to-speech.html",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1f2937; background: #f9fafb; }
+    header { background: white; border-bottom: 1px solid #e5e7eb; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: #1f2937; text-decoration: none; }
+    .logo span { color: #2563EB; }
+    .back-link { color: #6b7280; text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { color: #2563EB; }
+    .container { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1f2937; }
+    .subtitle { color: #6b7280; margin-bottom: 2rem; }
+    .ad-placeholder { background: #f3f4f6; border: 2px dashed #d1d5db; border-radius: 8px; padding: 1.5rem; text-align: center; color: #9ca3af; font-size: 0.875rem; margin: 1.5rem 0; }
+    .tool-card { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    textarea { width: 100%; min-height: 220px; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; font-family: inherit; resize: vertical; }
+    textarea:focus { outline: none; border-color: #2563EB; }
+    .controls { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; margin: 1rem 0; }
+    .control-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .control-group label { font-size: 0.85rem; color: #6b7280; font-weight: 500; }
+    .control-group select, .control-group input[type=range] { padding: 0.5rem 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 0.95rem; background: white; }
+    .control-group select:focus { outline: none; border-color: #2563EB; }
+    .range-val { font-size: 0.85rem; color: #2563EB; font-weight: 600; text-align: center; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+    .btn-primary { background: #2563EB; color: white; }
+    .btn-primary:hover { background: #1e40af; }
+    .btn-pause { background: #f59e0b; color: white; }
+    .btn-pause:hover { background: #d97706; }
+    .btn-stop { background: #ef4444; color: white; }
+    .btn-stop:hover { background: #dc2626; }
+    .btn-secondary { background: white; color: #1f2937; border: 1px solid #e5e7eb; }
+    .btn-secondary:hover { background: #f9fafb; }
+    .status-bar { background: #f3f4f6; border-radius: 8px; padding: 0.75rem 1rem; margin-top: 1rem; font-size: 0.9rem; color: #6b7280; display: flex; align-items: center; gap: 0.5rem; }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; flex-shrink: 0; }
+    .status-dot.speaking { background: #10b981; animation: pulse 1s infinite; }
+    .status-dot.paused { background: #f59e0b; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .features { background: white; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border: 1px solid #e5e7eb; }
+    .features h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .features ul { margin-left: 1.5rem; }
+    .features li { margin-bottom: 0.5rem; }
+    footer { background: #1f2937; color: #9ca3af; padding: 2rem 1.5rem; margin-top: 4rem; text-align: center; }
+    footer a { color: #9ca3af; text-decoration: none; }
+    footer a:hover { color: white; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/" class="logo">Yes<span>Palm</span></a>
+    <a href="/" class="back-link">← Back to Tools</a>
+  </nav>
+</header>
+<div class="container">
+  <h1>🔊 Text to Speech</h1>
+  <p class="subtitle">Paste any text and hear it read aloud. Adjust speed and voice. No signup required.</p>
+
+  <div class="ad-placeholder">Ad Space - Rectangle (300x250)</div>
+
+  <div class="tool-card">
+    <textarea id="ttsInput" placeholder="Paste or type your text here..."></textarea>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="voiceSelect">🏽 Voice</label>
+        <select id="voiceSelect"><option>Loading voices...</option></select>
+      </div>
+      <div class="control-group">
+        <label for="speedRange">⏩ Speed: <span id="speedVal">1.0x</span></label>
+        <input type="range" id="speedRange" min="0.5" max="2" step="0.1" value="1" oninput="document.getElementById('speedVal').textContent=this.value+'x'">
+      </div>
+      <div class="control-group">
+        <label for="pitchRange">🎵 Pitch: <span id="pitchVal">1.0</span></label>
+        <input type="range" id="pitchRange" min="0.5" max="2" step="0.1" value="1" oninput="document.getElementById('pitchVal').textContent=parseFloat(this.value).toFixed(1)">
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="startSpeech()">▶ Play</button>
+      <button class="btn btn-pause" onclick="pauseSpeech()">⏸ Pause / Resume</button>
+      <button class="btn btn-stop" onclick="stopSpeech()">⏹ Stop</button>
+      <button class="btn btn-secondary" onclick="clearText()">Clear</button>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Ready — paste text and click Play</span>
+    </div>
+  </div>
+
+  <div class="ad-placeholder">Ad Space - Between Results</div>
+
+  <div class="features">
+    <h2>About This Tool</h2>
+    <ul>
+      <li><strong>Browser-based:</strong> Uses the Web Speech API built into modern browsers — no server calls, fully private</li>
+      <li><strong>Voice selection:</strong> Choose from all voices installed on your device/browser</li>
+      <li><strong>Speed control:</strong> Adjust reading speed from 0.5x (slow) to 2x (fast)</li>
+      <li><strong>Pitch control:</strong> Fine-tune the pitch of the synthesized voice</li>
+      <li><strong>Pause &amp; Resume:</strong> Pause mid-sentence and continue from where you left off</li>
+    </ul>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2026 YesPalm. All rights reserved. | <a href="/privacy.html">Privacy</a> | <a href="/terms.html">Terms</a></p>
+</footer>
+<script>
+  let utterance = null;
+  const synth = window.speechSynthesis;
+
+  function populateVoices() {
+    const sel = document.getElementById('voiceSelect');
+    const voices = synth.getVoices();
+    if (!voices.length) return;
+    sel.innerHTML = '';
+    voices.forEach((v, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = v.name + ' (' + v.lang + ')';
+      if (v.default) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  }
+
+  populateVoices();
+  if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = populateVoices;
+
+  function setStatus(state, msg) {
+    const dot = document.getElementById('statusDot');
+    dot.className = 'status-dot' + (state ? ' ' + state : '');
+    document.getElementById('statusText').textContent = msg;
+  }
+
+  function startSpeech() {
+    const text = document.getElementById('ttsInput').value.trim();
+    if (!text) { setStatus('', 'Please enter some text first.'); return; }
+    synth.cancel();
+    utterance = new SpeechSynthesisUtterance(text);
+    const voices = synth.getVoices();
+    const idx = parseInt(document.getElementById('voiceSelect').value);
+    if (voices[idx]) utterance.voice = voices[idx];
+    utterance.rate = parseFloat(document.getElementById('speedRange').value);
+    utterance.pitch = parseFloat(document.getElementById('pitchRange').value);
+    utterance.onstart = () => setStatus('speaking', 'Speaking...');
+    utterance.onend = () => setStatus('', 'Finished.');
+    utterance.onerror = (e) => setStatus('', 'Error: ' + e.error);
+    synth.speak(utterance);
+  }
+
+  function pauseSpeech() {
+    if (synth.speaking && !synth.paused) {
+      synth.pause();
+      setStatus('paused', 'Paused.');
+    } else if (synth.paused) {
+      synth.resume();
+      setStatus('speaking', 'Speaking...');
+    }
+  }
+
+  function stopSpeech() {
+    synth.cancel();
+    setStatus('', 'Stopped.');
+  }
+
+  function clearText() {
+    synth.cancel();
+    document.getElementById('ttsInput').value = '';
+    setStatus('', 'Ready — paste text and click Play');
+  }
+</script>
+</body>
+</html>
