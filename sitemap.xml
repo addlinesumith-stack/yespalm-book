@@ -140,4 +140,24 @@
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
+      <url>
+        <loc>https://www.yespalm.com/tools/invoice-generator.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.yespalm.com/tools/pomodoro-timer.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.yespalm.com/tools/markdown-editor.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.yespalm.com/blog/best-free-invoice-generators.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
 </urlset>
