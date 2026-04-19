@@ -115,4 +115,9 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+    <url>
+        <loc>https://www.yespalm.com/blog/top-browser-extensions-for-productivity.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
 </urlset>
