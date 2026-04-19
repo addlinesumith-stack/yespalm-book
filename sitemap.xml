@@ -120,4 +120,19 @@
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
+      <url>
+        <loc>https://www.yespalm.com/tools/percentage-calculator.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.yespalm.com/tools/text-to-speech.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.yespalm.com/tools/image-compressor.html</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
 </urlset>
