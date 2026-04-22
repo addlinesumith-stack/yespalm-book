@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test - Test Your WPM and Accuracy | YesPalm</title>
+    <meta name="description" content="Test your typing speed with our free online tool. Measure WPM (words per minute) and accuracy with real-time feedback.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-box {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563EB;
+        }
+        .text-display {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            font-size: 1.5rem;
+            line-height: 2;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', monospace;
+            user-select: none;
+        }
+        .text-display .correct {
+            color: #10b981;
+        }
+        .text-display .incorrect {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+        .text-display .current {
+            border-left: 2px solid #2563EB;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .input-area {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 1rem;
+        }
+        .input-area:focus {
+            outline: none;
+            border-color: #2563EB;
+        }
+        .input-area:disabled {
+            background: #f3f4f6;
+        }
+        .btn {
+            background: linear-gradient(135deg, #2563EB 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .results.active {
+            display: block;
+        }
+        .results h2 {
+            margin: 0 0 1rem 0;
+        }
+        .results p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">YesPalm</div>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#tools">Tools</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="tool-container">
+        <h1>Typing Speed Test</h1>
+        <p style="color: #6b7280; margin-bottom: 2rem;">Test your typing speed and accuracy. Click in the text box below to begin.</p>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-label">WPM</div>
+                <div class="stat-value" id="wpm">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="time">0s</div>
+            </div>
+        </div>
+
+        <div class="text-display" id="textDisplay"></div>
+        
+        <input type="text" class="input-area" id="inputArea" placeholder="Click here to start typing..." autocomplete="off" spellcheck="false">
+        
+        <button class="btn" onclick="resetTest()">Reset Test</button>
+
+        <div class="results" id="results">
+            <h2>🎉 Test Complete!</h2>
+            <p>Your speed: <strong id="finalWPM">0</strong> WPM</p>
+            <p>Accuracy: <strong id="finalAccuracy">0</strong>%</p>
+            <p id="performanceMessage"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 YesPalm. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const paragraphs = [
+            "The quick brown fox jumps over the lazy dog while the sun shines brightly in the clear blue sky.",
+            "Technology has revolutionized the way we communicate and interact with each other in modern society.",
+            "Practice makes perfect when it comes to improving your typing speed and accuracy over time.",
+            "Learning to type without looking at the keyboard is an essential skill for productivity.",
+            "The internet connects billions of people around the world sharing information instantly.",
+            "Writing code requires attention to detail and a strong understanding of logic and syntax.",
+            "Reading books expands your vocabulary and improves your ability to express complex ideas.",
+            "Exercise and proper nutrition are fundamental components of maintaining good health."
+        ];
+
+        let currentText = '';
+        let currentIndex = 0;
+        let startTime = null;
+        let timerInterval = null;
+        let correctChars = 0;
+        let totalChars = 0;
+
+        const textDisplay = document.getElementById('textDisplay');
+        const inputArea = document.getElementById('inputArea');
+        const wpmEl = document.getElementById('wpm');
+        const accuracyEl = document.getElementById('accuracy');
+        const timeEl = document.getElementById('time');
+
+        function initTest() {
+            currentText = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+            currentIndex = 0;
+            correctChars = 0;
+            totalChars = 0;
+            startTime = null;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            textDisplay.innerHTML = currentText.split('').map((char, index) => {
+                if (index < currentIndex) {
+                    const userChar = inputArea.value[index];
+                    const className = userChar === char ? 'correct' : 'incorrect';
+                    return `<span class="${className}">${char}</span>`;
+                } else if (index === currentIndex) {
+                    return `<span class="current">${char}</span>`;
+                } else {
+                    return char;
+                }
+            }).join('');
+        }
+
+        function updateStats() {
+            if (!startTime) return;
+            
+            const elapsed = (Date.now() - startTime) / 1000;
+            const minutes = elapsed / 60;
+            const words = correctChars / 5;
+            const wpm = Math.round(words / minutes) || 0;
+            const accuracy = totalChars > 0 ? Math.round((correctChars / totalChars) * 100) : 100;
+            
+            wpmEl.textContent = wpm;
+            accuracyEl.textContent = accuracy + '%';
+            timeEl.textContent = Math.floor(elapsed) + 's';
+        }
+
+        inputArea.addEventListener('input', (e) => {
+            if (!startTime) {
+                startTime = Date.now();
+                timerInterval = setInterval(updateStats, 100);
+            }
+
+            const typed = e.target.value;
+            currentIndex = typed.length;
+            totalChars = typed.length;
+            correctChars = 0;
+
+            for (let i = 0; i < typed.length; i++) {
+                if (typed[i] === currentText[i]) {
+                    correctChars++;
+                }
+            }
+
+            updateDisplay();
+            updateStats();
+
+            if (typed === currentText) {
+                finishTest();
+            }
+        });
+
+        function finishTest() {
+            clearInterval(timerInterval);
+            inputArea.disabled = true;
+            
+            const elapsed = (Date.now() - startTime) / 1000;
+            const minutes = elapsed / 60;
+            const words = correctChars / 5;
+            const wpm = Math.round(words / minutes);
+            const accuracy = Math.round((correctChars / totalChars) * 100);
+            
+            document.getElementById('finalWPM').textContent = wpm;
+            document.getElementById('finalAccuracy').textContent = accuracy;
+            
+            let message = '';
+            if (wpm >= 60 && accuracy >= 95) {
+                message = 'Excellent! You\'re a typing pro!';
+            } else if (wpm >= 40) {
+                message = 'Great job! Keep practicing to improve further.';
+            } else {
+                message = 'Good effort! Practice regularly to increase your speed.';
+            }
+            document.getElementById('performanceMessage').textContent = message;
+            
+            document.getElementById('results').classList.add('active');
+        }
+
+        function resetTest() {
+            clearInterval(timerInterval);
+            inputArea.value = '';
+            inputArea.disabled = false;
+            startTime = null;
+            currentIndex = 0;
+            correctChars = 0;
+            totalChars = 0;
+            wpmEl.textContent = '0';
+            accuracyEl.textContent = '100%';
+            timeEl.textContent = '0s';
+            document.getElementById('results').classList.remove('active');
+            initTest();
+            inputArea.focus();
+        }
+
+        initTest();
+    </script>
+</body>
+</html>
