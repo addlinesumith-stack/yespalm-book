@@ -160,4 +160,28 @@
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
+  
+  <url>
+    <loc>https://www.yespalm.com/tools/bmi-calculator.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.yespalm.com/tools/countdown-timer.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.yespalm.com/tools/color-picker.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.yespalm.com/blog/free-health-calculators.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
