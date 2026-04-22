@@ -184,4 +184,28 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  
+  <url>
+    <loc>https://www.yespalm.com/tools/resume-keywords.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.yespalm.com/tools/typing-speed-test.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.yespalm.com/tools/screen-recorder.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.yespalm.com/blog/improve-typing-speed.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
