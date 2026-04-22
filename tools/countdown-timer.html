@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer - Live Event Countdown | YesPalm</title>
+    <meta name="description" content="Free countdown timer for events, birthdays, deadlines. Set target date and share with others. Real-time countdown in days, hours, minutes, seconds.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2em;
+        }
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-section {
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        .countdown-display {
+            display: none;
+            margin-top: 30px;
+        }
+        .countdown-display.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .event-title {
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .countdown-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            color: white;
+        }
+        .countdown-number {
+            font-size: 3em;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+        .countdown-label {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+        .share-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .share-label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .share-url {
+            display: flex;
+            gap: 10px;
+        }
+        .share-url input {
+            flex: 1;
+            font-size: 14px;
+        }
+        .btn-copy {
+            padding: 15px 25px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-copy:hover {
+            background: #059669;
+        }
+        .btn-reset {
+            width: 100%;
+            margin-top: 15px;
+            background: #6c757d;
+        }
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+        .finished-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+            display: none;
+        }
+        .finished-message.show {
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .countdown-number {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ Countdown Timer</h1>
+        <p class="subtitle">Create a countdown to your special event</p>
+        
+        <div class="input-section" id="inputSection">
+            <div class="input-group">
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" placeholder="My Birthday, Wedding Day, New Year...">
+            </div>
+            <div class="input-group">
+                <label for="targetDate">Target Date & Time</label>
+                <input type="datetime-local" id="targetDate">
+            </div>
+            <button class="btn" onclick="startCountdown()">Start Countdown</button>
+        </div>
+        
+        <div class="countdown-display" id="countdownDisplay">
+            <div class="event-title" id="eventTitle"></div>
+            
+            <div class="countdown-grid">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            
+            <div class="finished-message" id="finishedMessage">
+                🎉 Event Has Arrived! 🎉
+            </div>
+            
+            <div class="share-section">
+                <div class="share-label">Share this countdown:</div>
+                <div class="share-url">
+                    <input type="text" id="shareUrl" readonly>
+                    <button class="btn-copy" onclick="copyShareUrl()">Copy</button>
+                </div>
+            </div>
+            
+            <button class="btn btn-reset" onclick="resetCountdown()">Create New Countdown</button>
+        </div>
+    </div>
+    
+    <script>
+        let countdownInterval;
+        let targetTimestamp;
+        
+        // Check if URL has parameters on load
+        window.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const eventName = params.get('event');
+            const dateParam = params.get('date');
+            
+            if (eventName && dateParam) {
+                document.getElementById('eventName').value = decodeURIComponent(eventName);
+                document.getElementById('targetDate').value = dateParam;
+                startCountdown();
+            }
+        });
+        
+        function startCountdown() {
+            const eventName = document.getElementById('eventName').value;
+            const targetDate = document.getElementById('targetDate').value;
+            
+            if (!eventName || !targetDate) {
+                alert('Please enter both event name and target date');
+                return;
+            }
+            
+            targetTimestamp = new Date(targetDate).getTime();
+            
+            if (targetTimestamp <= Date.now()) {
+                alert('Please select a future date and time');
+                return;
+            }
+            
+            document.getElementById('eventTitle').textContent = eventName;
+            document.getElementById('inputSection').style.display = 'none';
+            document.getElementById('countdownDisplay').classList.add('show');
+            
+            // Generate shareable URL
+            const shareUrl = window.location.origin + window.location.pathname + 
+                '?event=' + encodeURIComponent(eventName) + 
+                '&date=' + targetDate;
+            document.getElementById('shareUrl').value = shareUrl;
+            
+            // Update countdown immediately and then every second
+            updateCountdown();
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+        
+        function updateCountdown() {
+            const now = Date.now();
+            const distance = targetTimestamp - now;
+            
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector('.countdown-grid').style.display = 'none';
+                document.getElementById('finishedMessage').classList.add('show');
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        
+        function copyShareUrl() {
+            const urlInput = document.getElementById('shareUrl');
+            urlInput.select();
+            document.execCommand('copy');
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+        
+        function resetCountdown() {
+            clearInterval(countdownInterval);
+            document.getElementById('inputSection').style.display = 'block';
+            document.getElementById('countdownDisplay').classList.remove('show');
+            document.querySelector('.countdown-grid').style.display = 'grid';
+            document.getElementById('finishedMessage').classList.remove('show');
+            document.getElementById('eventName').value = '';
+            document.getElementById('targetDate').value = '';
+            
+            // Clear URL parameters
+            window.history.pushState({}, '', window.location.pathname);
+        }
+    </script>
+</body>
+</html>
